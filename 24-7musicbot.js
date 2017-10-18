@@ -121,4 +121,4 @@ client.on('ready', () => {
 });
 
 
-client.login('MzY5MjA4NjA3MTI2MDYxMDU3.DMVMLA.cp9z9F7hZie_MgvQlqcMth94GW8');
+client.login('process.env.TOKEN');
