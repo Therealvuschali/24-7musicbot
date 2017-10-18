@@ -2,4 +2,4 @@ npm install --save discord.js
 npm install opusscript
 npm install node-opus
 npm install ffmpeg-binaries
-npm start node 24-7musicbot.js
+npm start 24-7musicbot.js
