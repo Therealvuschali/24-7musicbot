@@ -111,25 +111,25 @@ client.on('ready', () => {
     //},5000); // time between each interval in milliseconds
 });
 
-client.on('ready', () => {
-    let guild = client.guilds.get('266614161868324865');
-    let role = guild.roles.get('294883549222404096');
-    var interval = setInterval (function (){
-    role.setColor('#00ff04');
-    role.setColor('#00ff87');
-    role.setColor('#00ffe5');
-    role.setColor('#00bbff');
-    role.setColor('#003bff');
-    role.setColor('#4c00ff');
-    role.setColor('#bb00ff');
-    role.setColor('#ff00c7');
-    role.setColor('#ff0054');
-    role.setColor('#ff0000');
-    role.setColor('#ff6e00');
-    role.setColor('#ffbf00');
-    role.setColor('#f6ff00');
-    role.setColor('#88ff00');
-    },10);
-});
+//client.on('ready', () => {
+//    let guild = client.guilds.get('266614161868324865');
+//    let role = guild.roles.get('294883549222404096');
+//    var interval = setInterval (function (){
+//    role.setColor('#00ff04');
+//    role.setColor('#00ff87');
+//   role.setColor('#00ffe5');
+//    role.setColor('#00bbff');
+//    role.setColor('#003bff');
+//    role.setColor('#4c00ff');
+//    role.setColor('#bb00ff');
+//    role.setColor('#ff00c7');
+//    role.setColor('#ff0054');
+//    role.setColor('#ff0000');
+//    role.setColor('#ff6e00');
+//    role.setColor('#ffbf00');
+//    role.setColor('#f6ff00');
+//    role.setColor('#88ff00');
+//    },10);
+//});
 
 client.login(process.env.TOKEN);
