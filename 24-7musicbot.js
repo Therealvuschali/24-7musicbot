@@ -86,6 +86,7 @@ client.on('ready', () => {
     var interval = setInterval (function (){
             internetradio.getStationInfo(Stream, checkNowPlaying);
     }, 5000); // time between each interval in milliseconds
+});
 
     
 client.login(process.env.TOKEN);
