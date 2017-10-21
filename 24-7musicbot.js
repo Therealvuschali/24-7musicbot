@@ -3,9 +3,6 @@ const client = new Discord.Client({autoReconnect:true});
 var internetradio = require('node-internet-radio');
 var Stream = "http://stream12.iloveradio.de/iloveradio5-aac.mp3";
 var previousplaying = "none";
-//var nowplaying = "iloveradio.de/ilovemashup";
-//const nowplaying = 
-
 
 
 // Create an event listener for messages
@@ -75,61 +72,20 @@ client.on('ready', () => {
     let channel1 = client.channels.get('344602529533001728');
     channel1.join().then(connection => { connection.playStream('http://stream12.iloveradio.de/iloveradio5-aac.mp3'); })
     console.log('Connected and playing on MGATW');
-    //client.channels.get('368729573694898179').send("musicbot is up and running! if you find any errors/bugs then please private message those to <@266613136403070978>");
-
+    
     var previousplaying = ''; 
     const checkNowPlaying = function (err, station) {
         if (err) { console.log('error', err); return; }
         nowplaying = (station.title);
         if (nowplaying != previousplaying) {
-            client.guilds.get('266614161868324865').voiceConnection.disconnect();
-            client.guilds.get('338605399047536642').voiceConnection.disconnect();
             console.log(nowplaying);
             client.user.setGame(nowplaying);
             previousplaying = (nowplaying);
-            let channel = client.channels.get('272849981898227724');
-            channel.join().then(connection => { connection.playStream('http://stream12.iloveradio.de/iloveradio5-aac.mp3'); });
-            let channel1 = client.channels.get('344602529533001728');
-            channel1.join().then(connection => { connection.playStream('http://stream12.iloveradio.de/iloveradio5-aac.mp3'); });
         }
     }
     var interval = setInterval (function (){
             internetradio.getStationInfo(Stream, checkNowPlaying);
     }, 5000); // time between each interval in milliseconds
 
-    //var previousplaying = ""; 
-   // var interval = setInterval (function (){
-    //        internetradio.getStationInfo(Stream, function(error, station) {
-    //            if (error) { console.log('error', error); return; }
-    //            nowplaying = (station.title);
-    //            if (nowplaying != previousplaying) {
-    //            console.log(nowplaying);
-    //            client.user.setGame(nowplaying);
-    //            previousplaying = (nowplaying);
-    //            }
-   //         });
-    //},5000); // time between each interval in milliseconds
-});
-
-//client.on('ready', () => {
-//    let guild = client.guilds.get('266614161868324865');
-//    let role = guild.roles.get('294883549222404096');
-//    var interval = setInterval (function (){
-//    role.setColor('#00ff04');
-//    role.setColor('#00ff87');
-//   role.setColor('#00ffe5');
-//    role.setColor('#00bbff');
-//    role.setColor('#003bff');
-//    role.setColor('#4c00ff');
-//    role.setColor('#bb00ff');
-//    role.setColor('#ff00c7');
-//    role.setColor('#ff0054');
-//    role.setColor('#ff0000');
-//    role.setColor('#ff6e00');
-//    role.setColor('#ffbf00');
-//    role.setColor('#f6ff00');
-//    role.setColor('#88ff00');
-//    },10);
-//});
-
+    
 client.login(process.env.TOKEN);
