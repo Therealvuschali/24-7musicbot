@@ -3,45 +3,27 @@ const client = new Discord.Client({autoReconnect:true});
 var internetradio = require('node-internet-radio');
 var Stream = "http://stream12.iloveradio.de/iloveradio5-aac.mp3";
 var previousplaying = "none";
-//var nowplaying = "iloveradio.de/ilovemashup";
-//const nowplaying = 
-
 
 
 // Create an event listener for messages
 client.on('message', message => {
-    // If the message is "ping"
-    if (message.content === 'ping') {
-      // Send "pong" to the same channel
-      message.channel.send('pong');
-    }
-    if (message.content === 'u suck m8') {
-        message.channel.send('but you suck balls XD');
-    }
     if (message.content === 'no u') {
         message.channel.send('No u');
     }
     if (message.content === 'it works') {
         message.channel.send('ofcourse it works :wink:');
     }
-    if (message.content === 'exit musicbot') {
-        message.channel.send('the music bot is now going offline. bye bye')
-        .then(connection => {
-            client.user.setStatus('idle')
-            process.exit(0);
-        })   
-    }
     if (message.content === 'musicbot join') {
         if (message.member.voiceChannel) {
             message.member.voiceChannel.join()
               .then(connection => { // Connection is an instance of VoiceConnection
-                message.reply('Im there m8!');
+                message.reply('Im there m8! if i stop playing after a song just rejoin the channel');
                 connection.playStream('http://stream12.iloveradio.de/iloveradio5-aac.mp3');
                 console.log('playing in new channel');
               })
               .catch(console.log);
         } else {
-            message.reply('You fucking idiot, you need to join a voice channel first!');
+            message.reply('You need to join a voice channel first!');
         }
     }
     if (message.content === 'fuckoff') {
@@ -50,7 +32,7 @@ client.on('message', message => {
                 message.reply('okay, i see im not wanted anymore, ill go now :cry:')
                 console.log('disconnected from a channel');
         } else {
-            message.reply('You fucking idiot, you are not even in a voice channel!');
+            message.reply('You are not even in a voice channel!');
         }
     }
     if (message.content === 'musicbot help') {
@@ -75,6 +57,7 @@ client.on('ready', () => {
     let channel1 = client.channels.get('344602529533001728');
     channel1.join().then(connection => { connection.playStream('http://stream12.iloveradio.de/iloveradio5-aac.mp3'); })
     console.log('Connected and playing on MGATW');
+    //client.channels.get('368729573694898179').send("musicbot is up and running! if you find any errors/bugs then please private message those to <@266613136403070978>");
 
     var previousplaying = ''; 
     const checkNowPlaying = function (err, station) {
@@ -98,6 +81,5 @@ client.on('ready', () => {
             internetradio.getStationInfo(Stream, checkNowPlaying);
     }, 5000); // time between each interval in milliseconds
 });
-
     
 client.login(process.env.TOKEN);
