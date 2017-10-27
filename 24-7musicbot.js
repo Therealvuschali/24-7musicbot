@@ -14,7 +14,7 @@ client.on('message', message => {
         message.channel.send('ofcourse it works :wink:');
     }
     if (message.content === 'musicbot join') {
-        if (message.member.voiceChannel) {
+        if (message.member.voiceChannel) {       
             message.member.voiceChannel.join()
               .then(connection => { // Connection is an instance of VoiceConnection
                 message.reply('Im there m8! if i stop playing after a song just rejoin the channel');
@@ -26,7 +26,7 @@ client.on('message', message => {
             message.reply('You need to join a voice channel first!');
         }
     }
-    if (message.content === 'fuckoff') {
+    if (message.content === 'musicbot leave') {
         if (message.member.voiceChannel) {
                 message.guild.voiceConnection.disconnect();
                 message.reply('okay, i see im not wanted anymore, ill go now :cry:')
@@ -38,7 +38,7 @@ client.on('message', message => {
     if (message.content === 'musicbot help') {
         message.channel.sendFile("GIFCAT.gif", "GIFCAT.gif");
         setTimeout(function() {
-            message.reply('I mean, you wanted help? Here you go, use **musicbot join** to make me join and play. use **fuckoff** to make me leave the channel.');
+            message.reply('I mean, you wanted help? Here you go, use **musicbot join** to make me join and play. use **musicbot leave** to make me leave the channel.');
         }, 5000);
     }
     if (message.content.includes("i will win")) {
@@ -57,29 +57,25 @@ client.on('ready', () => {
     let channel1 = client.channels.get('344602529533001728');
     channel1.join().then(connection => { connection.playStream('http://stream12.iloveradio.de/iloveradio5-aac.mp3'); })
     console.log('Connected and playing on MGATW');
-    //client.channels.get('368729573694898179').send("musicbot is up and running! if you find any errors/bugs then please private message those to <@266613136403070978>");
 
     var previousplaying = ''; 
     const checkNowPlaying = function (err, station) {
         if (err) { console.log('error', err); return; }
         nowplaying = (station.title);
         if (nowplaying != previousplaying) {
-            let channel2 = client.guilds.get('266614161868324865');
-            let channel3 = client.guilds.get('338605399047536642');
-            channel2.voiceConnection.disconnect();
-            channel3.voiceConnection.disconnect();
             console.log(nowplaying);
             client.user.setGame(nowplaying);
             previousplaying = (nowplaying);
-            let channel = client.channels.get('272849981898227724');
-            channel.join().then(connection => { connection.playStream('http://stream12.iloveradio.de/iloveradio5-aac.mp3'); });
-            let channel1 = client.channels.get('344602529533001728');
-            channel1.join().then(connection => { connection.playStream('http://stream12.iloveradio.de/iloveradio5-aac.mp3'); });
+            client.channels.filter(c => c.type === 'voice' && c.members.has(client.user.id)).forEach(async (chan)  => {
+                await chan.leave();
+                chan.join().then(connection => { connection.playStream('http://stream12.iloveradio.de/iloveradio5-aac.mp3'); });
+            });
         }
     }
     var interval = setInterval (function (){
             internetradio.getStationInfo(Stream, checkNowPlaying);
     }, 5000); // time between each interval in milliseconds
 });
+
     
 client.login(process.env.TOKEN);
