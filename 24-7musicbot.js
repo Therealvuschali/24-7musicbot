@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client({autoReconnect:true});
 var internetradio = require('node-internet-radio');
-var Stream = "http://radiohamburg.hoerradar.de/radiohamburg-live-mp3-128?sABC=59s5qo4s%230%23nor1qs3332p6593394nq2s0090971o4n%23yvaxenqvbunzohetqr&amsparams=playerid:linkradiohamburgde;skey:1509284687";
+var Stream = "http://stream.radiohamburg.de/rhh-live/mp3-128/linkradiohamburgde/";
 var previousplaying = "none";
 
 
