@@ -50,7 +50,7 @@ client.on('ready', () => {
     console.log("You are connected to " + client.guilds.size + " servers!");
     console.log('I am ready!'); 
     client.user.setStatus('online');
-    client.user.setGame("iloveradio.de/ilovemashup");
+    client.user.setGame("DELUUXE.NL");
     let channel = client.channels.get('272849981898227724');
     channel.join().then(connection => { connection.playStream('http://20043.live.streamtheworld.com/WEB13_MP3_SC?'); })
     console.log('Connected and playing on YGS');
