@@ -12,7 +12,6 @@
   "author": "deluuxe",
   "license": "ISC",
   "dependencies": {
-    "bufferutil": "^3.0.2",
     "discord.js": "^11.2.1",
     "ffmpeg-binaries": "^3.2.2-3",
     "node-internet-radio": "0.1.5",
