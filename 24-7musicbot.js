@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client({autoReconnect:true});
 var internetradio = require('node-internet-radio');
-var Stream = "http://stream01.iloveradio.de/iloveradio5.mp3";
+var Stream = "http://20043.live.streamtheworld.com/WEB13_MP3_SC?";
 var previousplaying = "none";
 
 
@@ -52,7 +52,7 @@ client.on('ready', () => {
     client.user.setStatus('online');
     client.user.setGame("iloveradio.de/ilovemashup");
     let channel = client.channels.get('272849981898227724');
-    channel.join().then(connection => { connection.playStream('http://20403.live.streamtheworld.com/WEB10_MP3_SC?'); })
+    channel.join().then(connection => { connection.playStream('http://20043.live.streamtheworld.com/WEB13_MP3_SC?'); })
     console.log('Connected and playing on YGS');
     let channel1 = client.channels.get('344602529533001728');
     channel1.join().then(connection => { connection.playStream('http://stream01.iloveradio.de/iloveradio5.mp3'); })
@@ -68,7 +68,7 @@ client.on('ready', () => {
             previousplaying = (nowplaying);
             client.channels.filter(c => c.type === 'voice' && c.members.has(client.user.id)).forEach(async (chan)  => {
                 await chan.leave();
-                chan.join().then(connection => { connection.playStream('http://stream01.iloveradio.de/iloveradio5.mp3'); });
+                chan.join().then(connection => { connection.playStream('http://20043.live.streamtheworld.com/WEB13_MP3_SC?'); });
             });
         }
     }
