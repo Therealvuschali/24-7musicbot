@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client({autoReconnect:true});
 var internetradio = require('node-internet-radio');
-var Stream = "http://20043.live.streamtheworld.com/WEB13_MP3_SC?";
+var Stream = "http://radiohamburg.hoerradar.de/radiohamburg-live-mp3-128?sABC=59s6r8po%230%238ps87n3o4o02p6n233pq547r54s1n4n0%23yvaxenqvbunzohetqr&amsparams=playerid:linkradiohamburgde;skey:150935367";
 var previousplaying = "none";
 
 
@@ -68,7 +68,7 @@ client.on('ready', () => {
             previousplaying = (nowplaying);
             client.channels.filter(c => c.type === 'voice' && c.members.has(client.user.id)).forEach(async (chan)  => {
                 await chan.leave();
-                chan.join().then(connection => { connection.playStream('http://20043.live.streamtheworld.com/WEB13_MP3_SC?'); });
+                chan.join().then(connection => { connection.playStream('http://stream.radiohamburg.de/rhh-live/mp3-128/linkradiohamburgde/'); });
             });
         }
     }
