@@ -5,9 +5,8 @@
     "node": "8.8.0"
   },
   "description": "24/7musicbot",
-  "main": "index.js",
+  "main": "24/7musicbot.js",
   "scripts": {
-    "start": "node index.js"
   },
   "author": "deluuxe",
   "license": "ISC",
