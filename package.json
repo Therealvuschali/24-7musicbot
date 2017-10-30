@@ -7,7 +7,7 @@
   "description": "24/7musicbot",
   "main": "24-7musicbot.js",
   "scripts": {
-    "test": ""
+    "start": "node 24-7musicbot.js"
   },
   "author": "deluuxe",
   "license": "ISC",
