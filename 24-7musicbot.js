@@ -52,7 +52,7 @@ client.on('ready', () => {
     client.user.setStatus('online');
     client.user.setGame("iloveradio.de/ilovemashup");
     let channel = client.channels.get('272849981898227724');
-    channel.join().then(connection => { connection.playStream('http://stream01.iloveradio.de/iloveradio5.mp3'); })
+    channel.join().then(connection => { connection.playStream('http://20403.live.streamtheworld.com/WEB10_MP3_SC?'); })
     console.log('Connected and playing on YGS');
     let channel1 = client.channels.get('344602529533001728');
     channel1.join().then(connection => { connection.playStream('http://stream01.iloveradio.de/iloveradio5.mp3'); })
