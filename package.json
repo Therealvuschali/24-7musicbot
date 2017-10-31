@@ -1,6 +1,6 @@
 {
-  "name": "24-7musicbot.js",
-  "version": "1.0.0",
+  "name": "24-7musicbot",
+  "version": "1.1.0",
   "engines": {
     "node": "8.8.0"
   },
@@ -12,7 +12,7 @@
   "repository": {
   "type": "github",
   "url": "https://github.com/0300456/24-7musicbot.git"
-  }
+  },
   "dependencies": {
     "discord.js": "^11.2.1",
     "ffmpeg-binaries": "^3.2.2-3",
