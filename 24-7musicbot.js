@@ -73,9 +73,18 @@ client.on('ready', () => {
             });
         }
     }
+    //check for stream info every 5 seconds
     var interval = setInterval (function (){
             internetradio.getStationInfo(Stream, checkNowPlaying);
     }, 5000); // time between each interval in milliseconds
+    
+    //sets nowplaying every half minute to "musicbot help" and then back to nowplaying
+    var interval = setInterval (function (){
+        client.user.setGame(nowplaying);
+        setTimeout(function() {
+            client.user.setGame("musicbot help");
+        }, 30000); // time to wait
+    }, 30000); // time between each interval in milliseconds
 });
 
 client.login(process.env.TOKEN);
