@@ -108,4 +108,4 @@ client.on('ready', () => {
 //    channel1.join().then(connection => { connection.playStream('http://stream01.iloveradio.de/iloveradio5.mp3'); });
 
 
-client.login('MzY5MjA4NjA3MTI2MDYxMDU3.DMVMLA.cp9z9F7hZie_MgvQlqcMth94GW8');
+client.login(process.env.TOKEN);
