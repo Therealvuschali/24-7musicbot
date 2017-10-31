@@ -22,7 +22,7 @@ client.on('message', message => {
             message.member.voiceChannel.join()
               .then(connection => { // Connection is an instance of VoiceConnection
                 message.reply('Im there m8! if i stop playing after a song just rejoin the channel');
-                connection.playStream('http://www.iloveradio.de/ilovemashup.m3u');
+                connection.playStream('http://stream01.iloveradio.de/iloveradio5.mp3');
                 console.log('playing in new channel');
               })
               .catch(console.log);
