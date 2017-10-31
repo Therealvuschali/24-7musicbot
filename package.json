@@ -6,8 +6,7 @@
   },
   "description": "24/7musicbot",
   "main": "24/7musicbot.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "deluuxe",
   "license": "ISC",
   "dependencies": {
