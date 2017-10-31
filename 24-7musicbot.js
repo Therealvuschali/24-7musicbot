@@ -3,6 +3,10 @@ const client = new Discord.Client({autoReconnect:true});
 var internetradio = require('node-internet-radio');
 var Stream = "http://stream01.iloveradio.de/iloveradio5.mp3";
 var previousplaying = "none";
+//const channels = [];
+//var nowplaying = "iloveradio.de/ilovemashup";
+//const nowplaying = 
+
 
 
 // Create an event listener for messages
@@ -17,7 +21,7 @@ client.on('message', message => {
         if (message.member.voiceChannel) {       
             message.member.voiceChannel.join()
               .then(connection => { // Connection is an instance of VoiceConnection
-                message.reply('Im there m8!');
+                message.reply('Im there m8! if i stop playing after a song just rejoin the channel');
                 connection.playStream('http://stream01.iloveradio.de/iloveradio5.mp3');
                 console.log('playing in new channel');
               })
@@ -44,19 +48,35 @@ client.on('message', message => {
     if (message.content.includes("i will win")) {
         message.reply('I dont think so, i have all day :stuck_out_tongue:');
     }
+    //if (message.content.includes("spambot role reset")) {
+    //    let guild = client.guilds.get('354210585715671051');
+    //    let role = guild.roles.find("name", "normal cunt");
+    //    let role1 = guild.roles.find("name", "DETAINED");
+    //    let member = guild.members.get('266613136403070978');
+    //    member.addRole(role, "because");
+    //    member.removeRole(role1, "because");
+    //}
+    //if (message.content === 'create invite to mgatw') {
+    //    let guild = client.guilds.find("name", "Met Gamers Around The World");
+    //    let channel = guild.channels.find("name", "mpmc");
+    //    channel.createInvite()
+    //    .then(invite => console.log(`Invite: ${invite}`));
+    //}
 });
 
 client.on('ready', () => {
     console.log("You are connected to " + client.guilds.size + " servers!");
     console.log('I am ready!'); 
     client.user.setStatus('online');
-    client.user.setGame("DELUUXE.NL");
+    //client.user.setGame("iloveradio.de/ilovemashup");
     let channel = client.channels.get('272849981898227724');
     channel.join().then(connection => { connection.playStream('http://stream01.iloveradio.de/iloveradio5.mp3'); })
     console.log('Connected and playing on YGS');
     let channel1 = client.channels.get('344602529533001728');
     channel1.join().then(connection => { connection.playStream('http://stream01.iloveradio.de/iloveradio5.mp3'); })
     console.log('Connected and playing on MGATW');
+    
+    //client.channels.get('368729573694898179').send("musicbot is up and running! if you find any errors/bugs then please private message those to <@266613136403070978>");
 
     var previousplaying = ''; 
     const checkNowPlaying = function (err, station) {
@@ -77,5 +97,15 @@ client.on('ready', () => {
     }, 5000); // time between each interval in milliseconds
 });
 
-    
-client.login(process.env.TOKEN);
+//    let channel2 = client.guilds.get('266614161868324865');
+//    let channel3 = client.guilds.get('338605399047536642');
+//    channel2.voiceConnection.disconnect();
+//    channel3.voiceConnection.disconnect();
+
+//    let channel = client.channels.get('272849981898227724');
+//    channel.join().then(connection => { connection.playStream('http://stream01.iloveradio.de/iloveradio5.mp3'); });
+//    let channel1 = client.channels.get('344602529533001728');
+//    channel1.join().then(connection => { connection.playStream('http://stream01.iloveradio.de/iloveradio5.mp3'); });
+
+
+client.login('MzY5MjA4NjA3MTI2MDYxMDU3.DMVMLA.cp9z9F7hZie_MgvQlqcMth94GW8');
