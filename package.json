@@ -9,6 +9,10 @@
   "scripts": {},
   "author": "deluuxe",
   "license": "ISC",
+  "repository": {
+  "type": "github",
+  "url": "https://github.com/0300456/24-7musicbot.git"
+  }
   "dependencies": {
     "discord.js": "^11.2.1",
     "ffmpeg-binaries": "^3.2.2-3",
