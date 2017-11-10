@@ -6,12 +6,6 @@ var previousplaying = "none";
 
 // Create an event listener for messages
 client.on('message', message => {
-    if (message.content === 'no u') {
-        message.channel.send('No u');
-    }
-    if (message.content === 'it works') {
-        message.channel.send('ofcourse it works :wink:');
-    }
     if (message.content === 'musicbot join') {
         if (message.member.voiceChannel) {       
             message.member.voiceChannel.join()
@@ -36,9 +30,6 @@ client.on('message', message => {
     }
     if (message.content === 'musicbot help') {
             message.reply(' Here you go, use **musicbot join** to make me join and play. use **musicbot leave** to make me leave the channel.');
-    }
-    if (message.content.includes("i will win")) {
-        message.reply('I dont think so, i have all day :stuck_out_tongue:');
     }
 });
 
