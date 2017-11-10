@@ -35,10 +35,7 @@ client.on('message', message => {
         }
     }
     if (message.content === 'musicbot help') {
-        message.channel.sendFile("GIFCAT.gif", "GIFCAT.gif");
-        setTimeout(function() {
-            message.reply('I mean, you wanted help? Here you go, use **musicbot join** to make me join and play. use **musicbot leave** to make me leave the channel.');
-        }, 5000);
+            message.reply(' Here you go, use **musicbot join** to make me join and play. use **musicbot leave** to make me leave the channel.');
     }
     if (message.content.includes("i will win")) {
         message.reply('I dont think so, i have all day :stuck_out_tongue:');
