@@ -9,27 +9,30 @@ client.on('message', message => {
     if (message.content === 'musicbot join') {
         if (message.member.voiceChannel) {       
             message.member.voiceChannel.join()
-              .then(connection => { // Connection is an instance of VoiceConnection
+            .then(connection => { // Connection is an instance of VoiceConnection
                 message.reply('Im there m8!');
                 connection.playStream('http://stream12.iloveradio.de/iloveradio5-aac.mp3');
                 console.log('playing in new channel');
               })
-              .catch(console.log);
+           .catch(console.log);
         } else {
             message.reply('You need to join a voice channel first!');
         }
     }
     if (message.content === 'musicbot leave') {
         if (message.member.voiceChannel) {
-                message.guild.voiceConnection.disconnect();
-                message.reply('okay, i see im not wanted anymore, ill go now :cry:')
-                console.log('disconnected from a channel');
+            message.guild.voiceConnection.disconnect();
+            message.reply('okay, i see im not wanted anymore, ill go now :cry:')
+            console.log('disconnected from a channel');
         } else {
             message.reply('You are not even in a voice channel!');
         }
     }
     if (message.content === 'musicbot help') {
-            message.reply(' Here you go, use **musicbot join** to make me join and play. use **musicbot leave** to make me leave the channel.');
+        message.reply(' Here you go, use **musicbot join** to make me join and play. use **musicbot leave** to make me leave the channel.');
+    }
+    if (message.content === 'musicbot info') {
+        message.reply('im currently connected to ' + client.guilds.size + ' discord servers !');
     }
 });
 
