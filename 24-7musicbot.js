@@ -34,7 +34,39 @@ client.on('message', message => {
         }
     }
     if (message.content === 'musicbot help') {
-        message.reply(' Here you go, use **musicbot join** to make me join and play. use **musicbot leave** to make me leave the channel.');
+        message.channel.send({embed: {
+            color: 3447003,
+            author: {
+              name: client.user.username,
+              icon_url: client.user.avatarURL
+            },
+            title: "24/7 🔊 help",
+            url: "http://www.DELUUXE.NL/",
+            description: "Here are the commands you can use for me.",
+            fields: [{
+                name: "musicbot join",
+                value: "Makes the me join your current voice channel so i can play in it all day long. :)"
+              },
+              {
+                name: "musicbot leave",
+                value: "Makes me leave the voice channel you are connected to."
+              },
+              {
+                name: "musicbot info",
+                value: "Tells you to how many server im connected at that moment."
+              },
+              {
+                name: "note",
+                value: "this bot is designed to play 24/7 in a voice channel, and thus its not recomended that you make it join and/or leave to often."
+              },
+            ],
+            timestamp: new Date(),
+            footer: {
+              icon_url: client.user.avatarURL,
+              text: "© DELUUXE"
+            }
+          }
+        });
     }
     if (message.content === 'musicbot info') {
         message.reply('im currently connected to ' + client.guilds.size + ' discord servers !');
