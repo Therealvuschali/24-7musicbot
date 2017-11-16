@@ -25,12 +25,14 @@ client.on('message', message => {
         }
     }
     if (message.content === 'musicbot leave') {
-        if (message.member.voiceChannel) {
+        if ((message.guild.voiceConnection) && message.member.voiceChannel) {
             message.guild.voiceConnection.disconnect();
             message.reply('okay, i see im not wanted anymore, ill go now :cry:')
             console.log('disconnected from a channel');
+        } else if (!(message.member.voiceChannel)) {
+            message.reply('you are not even in a voice channel!');
         } else {
-        message.reply('You are not even in a voice channel!');
+            message.reply('cannot leave a channel that im not connected to.');
         }
     }
     if (message.content === 'musicbot help') {
