@@ -45,7 +45,7 @@ client.on('message', message => {
             description: "Here are the commands you can use for me.",
             fields: [{
                 name: "musicbot join",
-                value: "Makes the me join your current voice channel so i can play in it all day long. :)"
+                value: "Makes me join your current voice channel so i can play in it all day long. :)"
               },
               {
                 name: "musicbot leave",
@@ -53,11 +53,11 @@ client.on('message', message => {
               },
               {
                 name: "musicbot info",
-                value: "Tells you to how many server im connected at that moment."
+                value: "Tells you how many servers im connected at that moment."
               },
               {
                 name: "note",
-                value: "this bot is designed to play 24/7 in a voice channel, and thus its not recomended that you make it join and/or leave to often."
+                value: "this bot is designed to play 24/7 in a voice channel, and thus its not recommended that you make it join and/or leave too often."
               },
             ],
             timestamp: new Date(),
