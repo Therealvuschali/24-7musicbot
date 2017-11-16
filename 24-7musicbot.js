@@ -4,11 +4,7 @@ var internetradio = require('node-internet-radio');
 var Stream = "http://stream12.iloveradio.de/iloveradio5-aac.mp3";
 var previousplaying = "none";
 var nowplaying = "iloveradio.de/ilovemashup";
-//const channels = [];
-//var nowplaying = "iloveradio.de/ilovemashup";
-//const nowplaying = 
 var opus = require('node-opus');
-
 var rate = 96000;
 var encoder = new opus.OpusEncoder(rate);
 
