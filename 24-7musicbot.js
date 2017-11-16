@@ -3,6 +3,15 @@ const client = new Discord.Client({autoReconnect:true});
 var internetradio = require('node-internet-radio');
 var Stream = "http://stream12.iloveradio.de/iloveradio5-aac.mp3";
 var previousplaying = "none";
+var nowplaying = "iloveradio.de/ilovemashup";
+//const channels = [];
+//var nowplaying = "iloveradio.de/ilovemashup";
+//const nowplaying = 
+var opus = require('node-opus');
+
+var rate = 96000;
+var encoder = new opus.OpusEncoder(rate);
+
 
 // Create an event listener for messages
 client.on('message', message => {
@@ -11,10 +20,10 @@ client.on('message', message => {
             message.member.voiceChannel.join()
             .then(connection => { // Connection is an instance of VoiceConnection
                 message.reply('Im there m8!');
-                connection.playStream('http://stream12.iloveradio.de/iloveradio5-aac.mp3');
+                connection.playStream(Stream);
                 console.log('playing in new channel');
-              })
-           .catch(console.log);
+            })
+            .catch(console.log);
         } else {
             message.reply('You need to join a voice channel first!');
         }
@@ -25,7 +34,7 @@ client.on('message', message => {
             message.reply('okay, i see im not wanted anymore, ill go now :cry:')
             console.log('disconnected from a channel');
         } else {
-            message.reply('You are not even in a voice channel!');
+        message.reply('You are not even in a voice channel!');
         }
     }
     if (message.content === 'musicbot help') {
@@ -40,16 +49,7 @@ client.on('ready', () => {
     console.log("You are connected to " + client.guilds.size + " servers!");
     console.log('I am ready!'); 
     client.user.setStatus('online');
-    //client.user.setGame("iloveradio.de/ilovemashup");
-    let channel = client.channels.get('272849981898227724');
-    channel.join().then(connection => { connection.playStream('http://stream12.iloveradio.de/iloveradio5-aac.mp3'); })
-    console.log('Connected and playing on YGS');
-    let channel1 = client.channels.get('344602529533001728');
-    channel1.join().then(connection => { connection.playStream('http://stream12.iloveradio.de/iloveradio5-aac.mp3'); })
-    console.log('Connected and playing on MGATW');
     
-    //client.channels.get('368729573694898179').send("musicbot is up and running! if you find any errors/bugs then please private message those to <@266613136403070978>");
-
     var previousplaying = ''; 
     const checkNowPlaying = function (err, station) {
         if (err) { console.log('error', err); return; }
@@ -60,14 +60,14 @@ client.on('ready', () => {
             previousplaying = (nowplaying);
             client.channels.filter(c => c.type === 'voice' && c.members.has(client.user.id)).forEach(async (chan)  => {
                 await chan.leave();
-                chan.join().then(connection => { connection.playStream('http://stream12.iloveradio.de/iloveradio5-aac.mp3'); });
+                chan.join().then(connection => { connection.playStream(Stream); });
             });
         }
     }
-    //check for stream info every 5 seconds
     var interval = setInterval (function (){
             internetradio.getStationInfo(Stream, checkNowPlaying);
     }, 5000); // time between each interval in milliseconds
+
 });
 
 client.login(process.env.TOKEN);
