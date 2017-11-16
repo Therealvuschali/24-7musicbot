@@ -78,6 +78,11 @@ client.on('ready', () => {
     console.log('I am ready!'); 
     client.user.setStatus('online');
     
+    client.channels.filter(c => c.type === 'voice' && c.members.has(client.user.id)).forEach(async (chan)  => {
+        await chan.leave();
+        chan.join().then(connection => { connection.playFile('24-7bot_update_voice.mp3'); });
+    });
+    
     var previousplaying = ''; 
     const checkNowPlaying = function (err, station) {
         if (err) { console.log('error', err); return; }
