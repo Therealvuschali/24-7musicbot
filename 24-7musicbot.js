@@ -63,7 +63,7 @@ client.on('message', message => {
             timestamp: new Date(),
             footer: {
               icon_url: client.user.avatarURL,
-              text: "© DELUUXE"
+              text: "Creator: DELUUXE"
             }
           }
         });
