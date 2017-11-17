@@ -71,7 +71,43 @@ client.on('message', message => {
         });
     }
     if (message.content === 'musicbot info') {
-        message.reply('im currently connected to ' + client.guilds.size + ' discord servers !');
+        message.channel.send({embed: {
+            color: 3447003,
+            author: {
+              name: client.user.username,
+              icon_url: client.user.avatarURL
+            },
+            title: "24/7 🔊 information",
+            url: "http://www.DELUUXE.NL/",
+            description: "Here is some information about me.",
+            fields: [{
+                name: "Server/guild count",
+                value: "At the moment im connected to " + client.guilds.size + " servers/guilds."
+              },
+              {
+                name: "Uptime",
+                value: "i have been running for " + (Math.round(client.uptime / (1000 * 60 * 60))) + " hours, " + (Math.round(client.uptime / (1000 * 60)) % 60) + " minutes, and " + (Math.round(client.uptime / 1000) % 60) + " seconds."
+              },
+              {
+                name: "User count",
+                value: "I'm serving " + client.users.size + " users currently."
+              },
+              {
+                name: "Connected voicechannel count",
+                value: "I'm connected to " + client.voiceConnections.size + " voice channels."
+              },
+              {
+                name: "Ping",
+                value: "I currently have a connection speed of" + client.ping + "ms"
+              },
+            ],
+            timestamp: new Date(),
+            footer: {
+              icon_url: client.user.avatarURL,
+              text: "Created by DELUUXE"
+            }
+        }
+        });
     }
 });
 
