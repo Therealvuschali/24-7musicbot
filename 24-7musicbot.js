@@ -3,7 +3,7 @@ const client = new Discord.Client({autoReconnect:true});
 var internetradio = require('node-internet-radio');
 var Stream = "http://stream12.iloveradio.de/iloveradio5-aac.mp3";
 var previousplaying = "none";
-var nowplaying = "discord had major outage, thus bot got kicked from all channels!";
+var nowplaying = "iloveradio.de/ilovemashup";
 var opus = require('node-opus');
 var rate = 96000;
 var encoder = new opus.OpusEncoder(rate);
@@ -122,7 +122,7 @@ client.on('ready', () => {
         nowplaying = (station.title);
         if (nowplaying != previousplaying) {
             console.log(nowplaying);
-            //client.user.setGame(nowplaying);
+            client.user.setGame(nowplaying);
             previousplaying = (nowplaying);
             client.channels.filter(c => c.type === 'voice' && c.members.has(client.user.id)).forEach(async (chan)  => {
                 await chan.leave();
