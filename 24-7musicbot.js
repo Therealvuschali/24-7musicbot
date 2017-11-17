@@ -114,6 +114,7 @@ client.on('message', message => {
 client.on('ready', () => {
     console.log("You are connected to " + client.guilds.size + " servers!");
     console.log('I am ready!'); 
+    console.log("im currently connected to " + client.guilds.map(g => g.name));
     client.user.setStatus('online');
     
     var previousplaying = ''; 
