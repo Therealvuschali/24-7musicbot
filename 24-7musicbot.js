@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client({autoReconnect:true});
 var internetradio = require('node-internet-radio');
-var Stream = "http://stream01.iloveradio.de/iloveradio5.mp3";
+var Stream = "http://stream12.iloveradio.de/iloveradio5-aac.mp3";
 var previousplaying = "none";
 var nowplaying = "iloveradio.de/ilovemashup";
 var opus = require('node-opus');
