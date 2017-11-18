@@ -103,7 +103,15 @@ client.on('message', message => {
               },
               {
                 name: "Ping",
-                value: "I currently have a connection speed of " + client.ping + "ms"
+                value: "I currently have a connection speed of" + client.ping + "ms"
+              },
+              {
+                name: "Version",
+                value: "I'm currently running on version 1.66"
+              },
+              {
+                name: "Note from my creator",
+                value: "Hi, thank you for using my bot. I have had some resent issues, and thats why the bot was not working for a few hours or so. Also note that the bot might have left your voicechannel durring down time. Its supposed to stay in there untill you tell it to leave, sorry for any problems caused by this. Have a good day, DELUUXE."
               },
             ],
             timestamp: new Date(),
