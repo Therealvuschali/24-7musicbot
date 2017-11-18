@@ -5,6 +5,7 @@ var previousplaying = "none";
 var nowplaying = "iloveradio.de/ilovemashup";
 var opus = require('node-opus');
 var internetradio = require('node-internet-radio');
+const ms = require('ms');
 
 var rate = 96000;
 var encoder = new opus.OpusEncoder(rate);
