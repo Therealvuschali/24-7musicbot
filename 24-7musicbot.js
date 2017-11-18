@@ -87,7 +87,7 @@ client.on('message', message => {
             description: "Here is some information about me.",
             fields: [{
                 name: "Server/guild count",
-                value: "At the moment im connected to " + client.guilds.size + " servers/guilds."
+                value: "At the moment i'm connected to " + client.guilds.size + " servers/guilds."
               },
               {
                 name: "Uptime",
@@ -103,7 +103,7 @@ client.on('message', message => {
               },
               {
                 name: "Ping",
-                value: "I currently have a connection speed of" + client.ping + "ms"
+                value: "I currently have a connection speed of " + Math.round(client.ping) + "ms"
               },
               {
                 name: "Version",
