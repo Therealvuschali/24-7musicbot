@@ -4,7 +4,7 @@ var Stream = "http://stream12.iloveradio.de/iloveradio5-aac.mp3";
 var previousplaying = "none";
 var nowplaying = "iloveradio.de/ilovemashup";
 var opus = require('node-opus');
-var icecast = require('icecast');
+var internetradio = require('node-internet-radio');
 
 var rate = 96000;
 var encoder = new opus.OpusEncoder(rate);
@@ -130,34 +130,24 @@ client.on('ready', () => {
     console.log("im currently connected to " + client.guilds.map(g => g.name));
     client.user.setStatus('online');
     
-    var previousplaying = ''; 
-   
-    var interval = setInterval (function (){
-            //internetradio.getStationInfo(Stream, checkNowPlaying);
-            icecast.get(Stream, function (res) {
-                // log any "metadata" events that happen 
-                res.on('metadata', function (metadata) {
-                  var parsed = icecast.parse(metadata);
-                  //console.log(parsed.StreamTitle);
-                  nowplaying = (parsed.StreamTitle);
-                });
-                //nowplaying = (station.title);
-                //nowplaying = (parsed.StreamTitle);
-                if (nowplaying != previousplaying) {
-                    console.log(nowplaying);
-                    client.user.setGame(nowplaying);
-                    previousplaying = (nowplaying);
-                    client.channels.filter(c => c.type === 'voice' && c.members.has(client.user.id)).forEach(async (chan)  => {
-                        await chan.leave();
-                        chan.join().then(connection => { connection.playStream("http://stream12.iloveradio.de/iloveradio5-aac.mp3"); });
-                    });
-                }
+    var previousplaying = '';
+    const checkNowPlaying = function (err, station) {
+        if (err) { console.log('error', err); return; }
+        nowplaying = (station.title);
+        if (nowplaying != previousplaying) {
+            console.log(nowplaying);
+            client.user.setGame(nowplaying);
+            previousplaying = (nowplaying);
+            client.channels.filter(c => c.type === 'voice' && c.members.has(client.user.id)).forEach(async (chan)  => {
+                await chan.leave();
+                chan.join().then(connection => { connection.playStream("http://stream12.iloveradio.de/iloveradio5-aac.mp3"); });
             });
+        }
+    }
 
+    var interval = setInterval (function (){
+            internetradio.getStationInfo(Stream, checkNowPlaying);
     }, 5000); // time between each interval in milliseconds
 });
 
 client.login(process.env.TOKEN);
-
-process.on('uncaughtException', (err) => console.error(err));
-process.on('unhandledRejection', (err) => console.error(err));
