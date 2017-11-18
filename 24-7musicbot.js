@@ -103,7 +103,7 @@ client.on('message', message => {
               },
               {
                 name: "Ping",
-                value: "I currently have a connection speed of " + Math.round(client.ping) + "ms"
+                value: "I currently have a connection speed of " + Math.round(client.ping) + "ms."
               },
               {
                 name: "Version",
