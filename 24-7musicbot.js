@@ -158,3 +158,6 @@ client.on('ready', () => {
 });
 
 client.login(process.env.TOKEN);
+
+process.on('uncaughtException', (err) => console.error(err));
+process.on('unhandledRejection', (err) => console.error(err));
