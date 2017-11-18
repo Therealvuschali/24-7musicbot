@@ -4,7 +4,11 @@ var internetradio = require('node-internet-radio');
 var Stream = "http://stream12.iloveradio.de/iloveradio5-aac.mp3";
 var previousplaying = "none";
 var nowplaying = "iloveradio.de/ilovemashup";
+//const channels = [];
+//var nowplaying = "iloveradio.de/ilovemashup";
+//const nowplaying = 
 var opus = require('node-opus');
+
 var rate = 96000;
 var encoder = new opus.OpusEncoder(rate);
 
@@ -16,7 +20,7 @@ client.on('message', message => {
             message.member.voiceChannel.join()
             .then(connection => { // Connection is an instance of VoiceConnection
                 message.reply('Im there m8!');
-                connection.playStream(Stream);
+                connection.playStream("http://stream12.iloveradio.de/iloveradio5-aac.mp3");
                 console.log('playing in new channel');
             })
             .catch(console.log);
@@ -47,7 +51,7 @@ client.on('message', message => {
             description: "Here are the commands you can use for me.",
             fields: [{
                 name: "musicbot join",
-                value: "Makes me join your current voice channel so i can play in it all day long. :)"
+                value: "Makes the me join your current voice channel so i can play in it all day long. :)"
               },
               {
                 name: "musicbot leave",
@@ -55,17 +59,17 @@ client.on('message', message => {
               },
               {
                 name: "musicbot info",
-                value: "Tells you how many servers im connected at that moment."
+                value: "Tells you to how many server im connected at that moment."
               },
               {
                 name: "note",
-                value: "this bot is designed to play 24/7 in a voice channel, and thus its not recommended that you make it join and/or leave too often."
+                value: "this bot is designed to play 24/7 in a voice channel, and thus its not recomended that you make it join and/or leave to often."
               },
             ],
             timestamp: new Date(),
             footer: {
               icon_url: client.user.avatarURL,
-              text: "Creator: DELUUXE"
+              text: "Created by DELUUXE"
             }
           }
         });
@@ -98,7 +102,7 @@ client.on('message', message => {
               },
               {
                 name: "Ping",
-                value: "I currently have a connection speed of " + client.ping + "ms"
+                value: "I currently have a connection speed of" + client.ping + "ms"
               },
             ],
             timestamp: new Date(),
@@ -127,14 +131,13 @@ client.on('ready', () => {
             previousplaying = (nowplaying);
             client.channels.filter(c => c.type === 'voice' && c.members.has(client.user.id)).forEach(async (chan)  => {
                 await chan.leave();
-                chan.join().then(connection => { connection.playStream(Stream); });
+                chan.join().then(connection => { connection.playStream("http://stream12.iloveradio.de/iloveradio5-aac.mp3"); });
             });
         }
     }
     var interval = setInterval (function (){
             internetradio.getStationInfo(Stream, checkNowPlaying);
     }, 5000); // time between each interval in milliseconds
-
 });
 
 client.login(process.env.TOKEN);
