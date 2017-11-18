@@ -91,7 +91,7 @@ client.on('message', message => {
               },
               {
                 name: "Uptime",
-                value: "i have been running for " + (Math.round(client.uptime / (1000 * 60 * 60))) + " hours, " + (Math.round(client.uptime / (1000 * 60)) % 60) + " minutes, and " + (Math.round(client.uptime / 1000) % 60) + " seconds."
+                value: "I have been running for " + ms(client.uptime, { long: true }) + "."
               },
               {
                 name: "User count",
@@ -107,7 +107,7 @@ client.on('message', message => {
               },
               {
                 name: "Version",
-                value: "I'm currently running on version 1.66"
+                value: "I'm currently running on version 1.70"
               },
               {
                 name: "Note from my creator",
