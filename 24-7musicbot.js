@@ -103,7 +103,7 @@ client.on('message', message => {
               },
               {
                 name: "Ping",
-                value: "I currently have a connection speed of" + client.ping + "ms"
+                value: "I currently have a connection speed of " + client.ping + "ms"
               },
             ],
             timestamp: new Date(),
