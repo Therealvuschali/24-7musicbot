@@ -65,7 +65,7 @@ client.on('message', message => {
               },
               {
                 name: "note",
-                value: "this bot is designed to play 24/7 in a voice channel, and thus its not recomended that you make it join and/or leave to often. also check "musicbot info"."
+                value: "this bot is designed to play 24/7 in a voice channel, and thus its not recomended that you make it join and/or leave to often."
               },
             ],
             timestamp: new Date(),
