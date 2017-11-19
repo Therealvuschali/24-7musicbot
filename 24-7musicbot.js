@@ -61,11 +61,11 @@ client.on('message', message => {
               },
               {
                 name: "musicbot info",
-                value: "Tells you to how many server im connected at that moment."
+                value: "Tells you information about the bot, such as server count, amount of users and an importand note."
               },
               {
                 name: "note",
-                value: "this bot is designed to play 24/7 in a voice channel, and thus its not recomended that you make it join and/or leave to often."
+                value: "this bot is designed to play 24/7 in a voice channel, and thus its not recomended that you make it join and/or leave to often. also check "musicbot info"."
               },
             ],
             timestamp: new Date(),
