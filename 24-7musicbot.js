@@ -21,9 +21,9 @@ client.on('message', message => {
         if (message.member.voiceChannel) {       
             message.member.voiceChannel.join()
             .then(connection => { // Connection is an instance of VoiceConnection
-                message.reply('Im there m8!');
+                message.reply('Im there!');
                 connection.playStream("http://stream12.iloveradio.de/iloveradio5-aac.mp3");
-                console.log('playing in new channel');
+                console.log('playing in a new channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
             })
             .catch(console.log);
         } else {
@@ -34,7 +34,7 @@ client.on('message', message => {
         if ((message.guild.voiceConnection) && message.member.voiceChannel) {
             message.guild.voiceConnection.disconnect();
             message.reply('okay, i see im not wanted anymore, ill go now :cry:')
-            console.log('disconnected from a channel');
+            console.log('left a channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
         } else if (!(message.member.voiceChannel)) {
             message.reply('you are not even in a voice channel!');
         } else {
@@ -53,7 +53,7 @@ client.on('message', message => {
             description: "Here are the commands you can use for me.",
             fields: [{
                 name: "musicbot join",
-                value: "Makes the me join your current voice channel so i can play in it all day long. :)"
+                value: "Makes me join your current voice channel so i can play in it all day long. :smiley:"
               },
               {
                 name: "musicbot leave",
@@ -61,7 +61,7 @@ client.on('message', message => {
               },
               {
                 name: "musicbot info",
-                value: "Tells you information about the bot, such as server count, amount of users and an importand note."
+                value: "Tells you information about the bot, such as server count, amount of users and a importand note."
               },
               {
                 name: "note",
@@ -107,8 +107,12 @@ client.on('message', message => {
                 value: "I currently have a connection speed of " + Math.round(client.ping) + "ms."
               },
               {
+                name: "Hosting",
+                value: "I'm currently being hosted on heroku, for free :stuck_out_tongue:"
+              },
+              {
                 name: "Version",
-                value: "I'm currently running on version 1.70"
+                value: "I'm currently running on version 1.71"
               },
               {
                 name: "Note from my creator",
