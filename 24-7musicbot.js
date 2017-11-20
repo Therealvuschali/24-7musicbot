@@ -23,6 +23,7 @@ client.on('message', message => {
             .then(connection => { // Connection is an instance of VoiceConnection
                 message.reply('Im there!');
                 connection.playStream("http://stream12.iloveradio.de/iloveradio5-aac.mp3");
+                client.guilds.get('266614161868324865').channels.get('382125620286717952').send('playing in a new channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
                 console.log('playing in a new channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
             })
             .catch(console.log);
@@ -33,7 +34,8 @@ client.on('message', message => {
     if (message.content === 'musicbot leave') {
         if ((message.guild.voiceConnection) && message.member.voiceChannel) {
             message.guild.voiceConnection.disconnect();
-            message.reply('okay, i see im not wanted anymore, ill go now :cry:')
+            message.reply('okay, i see im not wanted anymore, ill go now :cry:');
+            client.guilds.get('266614161868324865').channels.get('382125620286717952').send('disconnected from a channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
             console.log('left a channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
         } else if (!(message.member.voiceChannel)) {
             message.reply('you are not even in a voice channel!');
