@@ -143,7 +143,8 @@ client.on('ready', () => {
         nowplaying = (station.title);
         if (nowplaying != previousplaying) {
             console.log(nowplaying);
-            client.user.setGame(nowplaying);
+            //client.user.setGame(nowplaying);
+            client.user.setGame(nowplaying, "https://www.twitch.tv/deluuxenl");
             previousplaying = (nowplaying);
             client.channels.filter(c => c.type === 'voice' && c.members.has(client.user.id)).forEach(async (chan)  => {
                 await chan.leave();
