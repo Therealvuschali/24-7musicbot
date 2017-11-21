@@ -114,7 +114,7 @@ client.on('message', message => {
               },
               {
                 name: "Version",
-                value: "I'm currently running on version 1.71"
+                value: "I'm currently running on version 1.72"
               },
               {
                 name: "Note from my creator",
