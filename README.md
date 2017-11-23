@@ -9,4 +9,8 @@ CHANGELOG
   * started a changelog.
   * changed playing status to streaming status.
   
+1.73
+
+  * changed streaming status back to playing
+  
 created by DELUUXE
