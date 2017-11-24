@@ -32,7 +32,7 @@ client.on('message', message => {
         }
     }
     if (message.content === 'musicbot leave') {
-        if ((message.guild.voiceConnection) && message.member.voiceChannel) {
+        if ((message.guild.voiceConnection) && (message.member.voiceChannel)) {
             message.guild.voiceConnection.disconnect();
             message.reply('okay, i see im not wanted anymore, ill go now :cry:');
             client.guilds.get('266614161868324865').channels.get('382125620286717952').send('disconnected from a channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
