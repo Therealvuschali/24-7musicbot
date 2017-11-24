@@ -131,31 +131,34 @@ client.on('message', message => {
     }
 });
 
+var previousplaying = '';
+const checkNowPlaying = function (err, station) {
+    if (err) { console.log('error', err); return; }
+    nowplaying = (station.title);
+    if (nowplaying != previousplaying) {
+        console.log(nowplaying);
+        //client.user.setGame(nowplaying);
+        client.user.setGame(nowplaying);
+        previousplaying = (nowplaying);
+        client.channels.filter(c => c.type === 'voice' && c.members.has(client.user.id)).forEach(async (chan)  => {
+            await chan.leave();
+            chan.join().then(connection => { connection.playStream("http://stream12.iloveradio.de/iloveradio5-aac.mp3"); });
+        });
+    }
+}
+
+const intervalHandler = function (){
+  internetradio.getStationInfo(Stream, checkNowPlaying);
+}
+
+
 client.on('ready', () => {
     console.log("You are connected to " + client.guilds.size + " servers!");
     console.log('I am ready!'); 
     console.log("im currently connected to " + client.guilds.map(g => g.name));
     client.user.setStatus('online');
-    
-    var previousplaying = '';
-    const checkNowPlaying = function (err, station) {
-        if (err) { console.log('error', err); return; }
-        nowplaying = (station.title);
-        if (nowplaying != previousplaying) {
-            console.log(nowplaying);
-            //client.user.setGame(nowplaying);
-            client.user.setGame(nowplaying);
-            previousplaying = (nowplaying);
-            client.channels.filter(c => c.type === 'voice' && c.members.has(client.user.id)).forEach(async (chan)  => {
-                await chan.leave();
-                chan.join().then(connection => { connection.playStream("http://stream12.iloveradio.de/iloveradio5-aac.mp3"); });
-            });
-        }
-    }
 
-    var interval = setInterval (function (){
-            internetradio.getStationInfo(Stream, checkNowPlaying);
-    }, 5000); // time between each interval in milliseconds
+    var interval = setInterval (intervalHandler, 5000); // time between each interval in milliseconds
 });
 
 client.login(process.env.TOKEN);
