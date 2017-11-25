@@ -21,7 +21,7 @@ client.on('message', message => {
         if (message.member.voiceChannel) {       
             message.member.voiceChannel.join()
             .then(connection => { // Connection is an instance of VoiceConnection
-                message.reply('Im there!');
+                message.reply('Im there! (sorry for the resent downtime. the bot is still in development.)');
                 connection.playStream("http://stream12.iloveradio.de/iloveradio5-aac.mp3");
                 client.guilds.get('266614161868324865').channels.get('382125620286717952').send('playing in a new channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
                 console.log('playing in a new channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
@@ -148,7 +148,7 @@ const checkNowPlaying = function (err, station) {
 }
 
 const intervalHandler = function (){
-  internetradio.getStationInfo(Stream, checkNowPlaying, internetradio.StreamSource.STREAM);
+  internetradio.getStationInfo(Stream, checkNowPlaying);
 }
 
 
