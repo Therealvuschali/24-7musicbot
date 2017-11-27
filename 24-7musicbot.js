@@ -18,18 +18,23 @@ var encoder = new opus.OpusEncoder(rate);
 // Create an event listener for messages
 client.on('message', message => {
     if (message.content === 'musicbot join') {
+      if(message.member.status != 'offline') {
         if (message.member.voiceChannel) {       
             message.member.voiceChannel.join()
             .then(connection => { // Connection is an instance of VoiceConnection
-                message.reply('Im there! (sorry for the resent downtime. the bot is still in development.)');
+                message.reply('Im there m8!');
                 connection.playStream("http://stream12.iloveradio.de/iloveradio5-aac.mp3");
-                client.guilds.get('266614161868324865').channels.get('382125620286717952').send('playing in a new channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
+                //console.log('playing in new channel');
+                //client.guilds.get('266614161868324865').channels.get('382125620286717952').send('playing in a new channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
                 console.log('playing in a new channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
             })
             .catch(console.log);
-        } else {
+            } else {
             message.reply('You need to join a voice channel first!');
         }
+      } else {
+        message.reply("please go online before asking that!");
+      }
     }
     if (message.content === 'musicbot leave') {
         if ((message.guild.voiceConnection) && (message.member.voiceChannel)) {
