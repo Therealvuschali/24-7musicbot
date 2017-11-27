@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client({autoReconnect:true});
 var Stream = "http://stream12.iloveradio.de/iloveradio5-aac.mp3";
 var previousplaying = "none";
-var nowplaying = "CURRENTLY FIXING A PROBLEM IN THE CODE!";
+var nowplaying = "W.I.P. | DELUUXE.NL";
 var opus = require('node-opus');
 var internetradio = require('node-internet-radio');
 const ms = require('ms');
@@ -134,7 +134,7 @@ client.on('message', message => {
 var previousplaying = '';
 const checkNowPlaying = function (err, station) {
     if (err) { console.log('error', err); return; }
-    //nowplaying = (station.title);
+    nowplaying = (station.title);
     if (nowplaying != previousplaying) {
         console.log(nowplaying);
         //client.user.setGame(nowplaying);
