@@ -25,7 +25,7 @@ client.on('message', message => {
                 message.reply('Im there m8!');
                 connection.playStream("http://stream12.iloveradio.de/iloveradio5-aac.mp3");
                 //console.log('playing in new channel');
-                //client.guilds.get('266614161868324865').channels.get('382125620286717952').send('playing in a new channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
+                client.guilds.get('266614161868324865').channels.get('382125620286717952').send('playing in a new channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
                 console.log('playing in a new channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
             })
             .catch(console.log);
