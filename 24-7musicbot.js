@@ -170,4 +170,5 @@ client.on('ready', () => {
     var interval = setInterval (intervalHandler, 5000); // time between each interval in milliseconds
 });
 
+
 client.login(process.env.TOKEN);
