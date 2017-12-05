@@ -72,7 +72,11 @@ client.on('message', message => {
               },
               {
                 name: "note",
-                value: "this bot is designed to play 24/7 in a voice channel, and thus its not recomended that you make it join and/or leave to often."
+                value: "This bot is designed to play 24/7 in a voice channel, and thus its not recomended that you make it join and/or leave to often."
+              },
+              {
+                name: "note2",
+                value: "The radio channel that the bot is playing is only available in europe servers, if you have a question, please send me a pm DELUUXE#4606."
               },
             ],
             timestamp: new Date(),
