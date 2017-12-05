@@ -150,7 +150,7 @@ const checkNowPlaying = function (err, station) {
         client.user.setGame(nowplaying);
         previousplaying = (nowplaying);
         client.channels.filter(c => c.type === 'voice' && c.members.has(client.user.id)).forEach(async (chan)  => {
-            await chan.leave();
+            chan.leave();
             chan.join().then(connection => { connection.playStream("http://stream12.iloveradio.de/iloveradio8-aac.mp3"); });
         });
     }
