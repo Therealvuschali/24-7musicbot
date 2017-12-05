@@ -6,7 +6,7 @@
   },
   "description": "24/7musicbot",
   "main": "24/7musicbot.js",
-  "scripts": {},
+  "scripts": {"preinstall": "npm install pm2 -g"},
   "author": "deluuxe",
   "license": "ISC",
   "repository": {
