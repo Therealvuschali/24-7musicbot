@@ -48,9 +48,6 @@ client.on('message', message => {
             message.reply('cannot leave a channel that im not connected to.');
         }
     }
-    if (message.content === 'musicbot crash') {
-        process.exit();
-    }
     if (message.content === 'musicbot help') {
         message.channel.send({embed: {
             color: 3447003,
