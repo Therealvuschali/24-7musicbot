@@ -1,1 +1,1 @@
-worker: forever start 24-7musicbot.js --attach
+worker: node 24-7musicbot.js
