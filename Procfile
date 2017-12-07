@@ -1,1 +1,1 @@
-worker: pm2 start 24-7musicbot.js
+worker: forever start 24-7musicbot.js
