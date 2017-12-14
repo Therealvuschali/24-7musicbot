@@ -127,7 +127,7 @@ client.on('message', message => {
               },
               {
                 name: "Note from my creator",
-                value: "Hi, thank you for using my bot. Discord and me have had some resent issues, and thats why the bot was not working for some time. Also note that the bot might have left your voicechannel durring down time. Its supposed to stay in there untill you tell it to leave, sorry for any problems caused by this. Have a good day, DELUUXE."
+                value: "Hi, thank you for using my bot. Discord and me have had some resent issues, and thats why the bot was not working for some time. Also note that the bot might have left your voicechannel during down time. Its supposed to stay in there untill you tell it to leave, sorry for any problems caused by this. Have a good day, DELUUXE."
               },
             ],
             timestamp: new Date(),
