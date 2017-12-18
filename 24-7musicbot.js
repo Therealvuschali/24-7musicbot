@@ -158,7 +158,7 @@ const checkNowPlaying = function (err, station) {
 }
 
 const intervalHandler = function (){
-  internetradio.getStationInfo(Stream, checkNowPlaying, internetradio.StreamSource.ICECAST);
+  internetradio.getStationInfo(Stream, checkNowPlaying);
 }
 
 client.on('ready', () => {
