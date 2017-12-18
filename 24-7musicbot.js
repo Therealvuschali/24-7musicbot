@@ -6,6 +6,8 @@ var nowplaying = "W.I.P. | DELUUXE.NL";
 var opus = require('node-opus');
 var internetradio = require('node-internet-radio');
 const ms = require('ms');
+var Reader = require('radio-song');
+var reader = new Reader('http://stream12.iloveradio.de/iloveradio8-aac.mp3')
 
 var rate = 96000;
 var encoder = new opus.OpusEncoder(rate);
@@ -160,6 +162,12 @@ const intervalHandler = function (){
   internetradio.getStationInfo(Stream, checkNowPlaying, internetradio.StreamSource.STREAM);
 }
 
+reader.on('metadata', function(songName) {
+  console.log(songName);
+});
+reader.on('error', function(e){
+  console.log(e);
+});
 
 client.on('ready', () => {
     console.log("You are connected to " + client.guilds.size + " servers!");
