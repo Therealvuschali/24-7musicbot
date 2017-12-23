@@ -19,7 +19,7 @@ var encoder = new opus.OpusEncoder(rate);
 // Create an event listener for messages
 client.on('message', message => {
     if (message.content === 'musicbot join') {
-      if(message.member.status != null) {
+      if(message.member.status != "offline") {
         if (message.member.voiceChannel) {       
             message.member.voiceChannel.join()
             .then(connection => { // Connection is an instance of VoiceConnection
