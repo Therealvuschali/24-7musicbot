@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client({autoReconnect:true});
-var Stream = "http://stream12.iloveradio.de/iloveradio8-aac.mp3";
+var Stream = "http://stream01.iloveradio.de/iloveradio5.mp3";
 var previousplaying = "none";
 var nowplaying = "W.I.P. | DELUUXE.NL";
 var opus = require('node-opus');
@@ -24,7 +24,7 @@ client.on('message', message => {
             message.member.voiceChannel.join()
             .then(connection => { // Connection is an instance of VoiceConnection
                 message.reply('Im there m8!');
-                connection.playStream("http://stream12.iloveradio.de/iloveradio8-aac.mp3");
+                connection.playStream("http://stream01.iloveradio.de/iloveradio5.mp3");
                 //console.log('playing in new channel');
                 client.guilds.get('266614161868324865').channels.get('382125620286717952').send('playing in a new channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
                 console.log('playing in a new channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
@@ -152,7 +152,7 @@ const checkNowPlaying = function (err, station) {
         previousplaying = (nowplaying);
         client.channels.filter(c => c.type === 'voice' && c.members.has(client.user.id)).forEach(async (chan)  => {
             await chan.leave();
-            chan.join().then(connection => { connection.playStream("http://stream12.iloveradio.de/iloveradio8-aac.mp3"); });
+            chan.join().then(connection => { connection.playStream("http://stream01.iloveradio.de/iloveradio5.mp3"); });
         });
     }
 }
