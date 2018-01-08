@@ -6,20 +6,16 @@ var nowplaying = "W.I.P. | DELUUXE.NL";
 var opus = require('node-opus');
 var internetradio = require('node-internet-radio');
 const ms = require('ms');
-
+var songcount = 0;
 
 var rate = 96000;
 var encoder = new opus.OpusEncoder(rate);
 
 
-
-
-
-
 // Create an event listener for messages
 client.on('message', message => {
     if (message.content === 'musicbot join') {
-      if(message.member.status != "offline") {
+      if(message.member.status != 'offline') {
         if (message.member.voiceChannel) {       
             message.member.voiceChannel.join()
             .then(connection => { // Connection is an instance of VoiceConnection
@@ -143,17 +139,22 @@ client.on('message', message => {
 
 var previousplaying = '';
 const checkNowPlaying = function (err, station) {
-    if (err) { console.log('error', err); return; }
+    if (err) { /*console.log('error', err);*/ return; }
     nowplaying = (station.title);
     if (nowplaying != previousplaying) {
-        console.log(nowplaying);
-        //client.user.setGame(nowplaying);
-        client.user.setGame(nowplaying);
-        previousplaying = (nowplaying);
-        client.channels.filter(c => c.type === 'voice' && c.members.has(client.user.id)).forEach(async (chan)  => {
-            await chan.leave();
-            chan.join().then(connection => { connection.playStream("http://stream01.iloveradio.de/iloveradio5.mp3"); });
-        });
+      console.log(nowplaying);
+      client.user.setGame(nowplaying);
+      previousplaying = (nowplaying);
+      songcount = songcount + 1;
+      console.log(songcount);
+        if (songcount >= 5) {
+          console.log("BOT REJOINED");
+          client.channels.filter(c => c.type === 'voice' && c.members.has(client.user.id)).forEach(async (chan)  => {
+              await chan.leave();
+             chan.join().then(connection => { connection.playStream("http://stream01.iloveradio.de/iloveradio5.mp3"); });
+          });
+          songcount = 0;
+        }
     }
 }
 
@@ -161,14 +162,20 @@ const intervalHandler = function (){
   internetradio.getStationInfo(Stream, checkNowPlaying, internetradio.StreamSource.STREAM);
 }
 
+
 client.on('ready', () => {
     console.log("You are connected to " + client.guilds.size + " servers!");
     console.log('I am ready!'); 
     console.log("im currently connected to " + client.guilds.map(g => g.name));
     client.user.setStatus('online');
 
+    console.log("BOT REJOINED");
+    client.channels.filter(c => c.type === 'voice' && c.members.has(client.user.id)).forEach(async (chan)  => {
+      await chan.leave();
+      chan.join().then(connection => { connection.playStream("http://stream01.iloveradio.de/iloveradio5.mp3"); });
+    });
+
     var interval = setInterval (intervalHandler, 5000); // time between each interval in milliseconds
 });
-
 
 client.login(process.env.TOKEN);
