@@ -146,7 +146,7 @@ const checkNowPlaying = function (err, station) {
       client.user.setGame(nowplaying);
       previousplaying = (nowplaying);
       songcount = songcount + 1;
-      console.log(songcount);
+      console.log("songs played after rejoin " + songcount);
         if (songcount >= 5) {
           console.log("BOT REJOINED");
           client.channels.filter(c => c.type === 'voice' && c.members.has(client.user.id)).forEach(async (chan)  => {
