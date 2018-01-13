@@ -19,8 +19,8 @@ client.on('message', message => {
         if (message.member.voiceChannel) {       
             message.member.voiceChannel.join()
             .then(connection => { // Connection is an instance of VoiceConnection
-                message.reply('Im there m8!');
                 connection.playStream("http://stream01.iloveradio.de/iloveradio5.mp3");
+                message.reply('Im there m8!');
                 //console.log('playing in new channel');
                 client.guilds.get('266614161868324865').channels.get('382125620286717952').send('playing in a new channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
                 console.log('playing in a new channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
