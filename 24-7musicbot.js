@@ -20,7 +20,7 @@ client.on('message', message => {
             message.member.voiceChannel.join()
             .then(connection => { // Connection is an instance of VoiceConnection
                 connection.playStream("http://stream01.iloveradio.de/iloveradio5.mp3");
-                message.reply('Im there m8! ATTENTION, we are currently experiencing some problems with playing audio on join. please give it up to 10 minutes for it to start playing, we are investigating. thx.');
+                message.reply('Im there!');
                 //console.log('playing in new channel');
                 client.guilds.get('266614161868324865').channels.get('382125620286717952').send('playing in a new channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
                 console.log('playing in a new channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
