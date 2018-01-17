@@ -13,7 +13,7 @@
   "url": "https://github.com/0300456/24-7musicbot.git"
   },
   "dependencies": {
-    "discord.js": "^11.2.1",
+    "discord.js": "^11.3.0",
     "ffmpeg-binaries": "^3.2.2-3",
     "node-opus":"^0.2.7",
     "node-internet-radio": "^0.1.5",
