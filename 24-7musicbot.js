@@ -123,7 +123,7 @@ const checkNowPlaying = function (err, station) {
     nowplaying = (station.title);
     if (nowplaying != previousplaying) {
       console.log(nowplaying);
-      client.user.setGame(nowplaying);
+      client.user.setActivity(nowplaying, { type: 'PLAYING' });
       previousplaying = (nowplaying);
       songcount = songcount + 1;
       console.log("songs played after rejoin " + songcount);
