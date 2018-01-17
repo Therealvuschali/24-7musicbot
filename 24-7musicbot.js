@@ -14,7 +14,7 @@ var encoder = new opus.OpusEncoder(rate);
 
 // Create an event listener for messages
 client.on('message', message => {
-    if (message.content === 'musicbot join') {
+    if (message.content === 'AJ join') {
       if(message.member.status != 'offline') {
         if (message.member.voiceChannel) {       
             message.member.voiceChannel.join()
@@ -33,7 +33,7 @@ client.on('message', message => {
         message.reply("please go online before asking that!");
       }
     }
-    if (message.content === 'musicbot leave') {
+    if (message.content === 'AJ leave') {
         if ((message.guild.voiceConnection) && (message.member.voiceChannel)) {
             message.guild.voiceConnection.disconnect();
             message.reply('okay, i see im not wanted anymore, ill go now :cry:');
@@ -45,35 +45,27 @@ client.on('message', message => {
             message.reply('cannot leave a channel that im not connected to.');
         }
     }
-    if (message.content === 'musicbot help') {
+    if (message.content === 'AJ help') {
         message.channel.send({embed: {
             color: 3447003,
             author: {
               name: client.user.username,
               icon_url: client.user.avatarURL
             },
-            title: "24/7 🔊 help",
+            title: "AJ help",
             url: "http://www.DELUUXE.NL/",
             description: "Here are the commands you can use for me.",
             fields: [{
-                name: "musicbot join",
+                name: "AJ join",
                 value: "Makes me join your current voice channel so i can play in it all day long. :smiley:"
               },
               {
-                name: "musicbot leave",
+                name: "AJ leave",
                 value: "Makes me leave the voice channel you are connected to."
               },
               {
-                name: "musicbot info",
+                name: "AJ info",
                 value: "Tells you information about the bot, such as server count, amount of users and a importand note."
-              },
-              {
-                name: "note",
-                value: "This bot is designed to play 24/7 in a voice channel, and thus its not recomended that you make it join and/or leave to often."
-              },
-              {
-                name: "note2",
-                value: "The radio channel that the bot is playing is only available in europe servers, if you have a question, please send me a pm DELUUXE#4606."
               },
             ],
             timestamp: new Date(),
@@ -84,14 +76,14 @@ client.on('message', message => {
           }
         });
     }
-    if (message.content === 'musicbot info') {
+    if (message.content === 'AJ info') {
         message.channel.send({embed: {
             color: 3447003,
             author: {
               name: client.user.username,
               icon_url: client.user.avatarURL
             },
-            title: "24/7 🔊 information",
+            title: "AJ information",
             url: "http://www.DELUUXE.NL/",
             description: "Here is some information about me.",
             fields: [{
@@ -113,18 +105,6 @@ client.on('message', message => {
               {
                 name: "Ping",
                 value: "I currently have a connection speed of " + Math.round(client.ping) + "ms."
-              },
-              {
-                name: "Hosting",
-                value: "I'm currently being hosted on heroku, for free :stuck_out_tongue:"
-              },
-              {
-                name: "Version",
-                value: "I'm currently running on version 1.73"
-              },
-              {
-                name: "Note from my creator",
-                value: "Hi, thank you for using my bot. Discord and me have had some resent issues, and thats why the bot was not working for some time. Also note that the bot might have left your voicechannel during down time. Its supposed to stay in there untill you tell it to leave, sorry for any problems caused by this. Have a good day, DELUUXE."
               },
             ],
             timestamp: new Date(),
