@@ -3,4 +3,4 @@ a discordbot that plays iloveradio.de/ilovemasup in a discord voicechannel. it a
 its made using discord.js in/for node js.
 
   
-created by DELUUXE
+created by vuschali
