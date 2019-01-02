@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client({autoReconnect:true});
 var Stream = "http://stream01.iloveradio.de/iloveradio5.mp3";
 var previousplaying = "none";
-var nowplaying = "W.I.P. | DELUUXE.NL";
+var nowplaying = "W.I.P. | ";
 var opus = require('node-opus');
 var internetradio = require('node-internet-radio');
 const ms = require('ms');
@@ -27,16 +27,16 @@ client.on('message', message => {
             })
             .catch(console.log);
             } else {
-            message.reply('You need to join a voice channel first!');
+            message.reply('Trete einen Server zuerst bei!');
         }
       } else {
-        message.reply("please go online before asking that!");
+        message.reply("Geh bitte zuerst Online!");
       }
     }
-    if (message.content === 'AJ leave') {
+    if (message.content === 'AJ Leave') {
         if ((message.guild.voiceConnection) && (message.member.voiceChannel)) {
             message.guild.voiceConnection.disconnect();
-            message.reply('okay, i see im not wanted anymore, ill go now :cry:');
+            message.reply('Schade dass ich gehen muss :cry:');
             client.guilds.get('266614161868324865').channels.get('382125620286717952').send('disconnected from a channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
             console.log('left a channel: ' + message.member.voiceChannel.name + '. On server: ' + message.guild.name + '.');
         } else if (!(message.member.voiceChannel)) {
@@ -54,38 +54,38 @@ client.on('message', message => {
             },
             title: "AJ help",
             url: "http://www.DELUUXE.NL/",
-            description: "Here are the commands you can use for me.",
+            description: "Hier einige Commands.",
             fields: [{
-                name: "AJ join",
+                name: "AJ Join",
                 value: "Makes me join your current voice channel so i can play in it all day long. :smiley:"
               },
               {
-                name: "AJ leave",
+                name: "AJ Leave",
                 value: "Makes me leave the voice channel you are connected to."
               },
               {
-                name: "AJ info",
+                name: "AJ Info",
                 value: "Tells you information about the bot, such as server count, amount of users and a importand note."
               },
             ],
             timestamp: new Date(),
             footer: {
               icon_url: client.user.avatarURL,
-              text: "Created by DELUUXE"
+              text: "Created by Vuschali"
             }
           }
         });
     }
-    if (message.content === 'AJ info') {
+    if (message.content === 'AJ Info') {
         message.channel.send({embed: {
             color: 3447003,
             author: {
               name: client.user.username,
               icon_url: client.user.avatarURL
             },
-            title: "AJ information",
-            url: "http://www.DELUUXE.NL/",
-            description: "Here is some information about me.",
+            title: "AJ Information",
+            url: "AJ's Musik Bot",
+            description: "Einige Informationen über mich.",
             fields: [{
                 name: "Server/guild count",
                 value: "At the moment i'm connected to " + client.guilds.size + " servers/guilds."
